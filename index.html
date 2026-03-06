@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagnóstico Tríade do Tempo - ImpulsoCoaching (Guiado)</title>
+  <title>Pesquisa Tríade do Tempo - ImpulsoCoaching (Guiado)</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
@@ -433,7 +433,7 @@
       <div class="header">
         <p class="brand">ImpulsoCoaching</p>
         <p class="tagline">A mudança pode acontecer em um instante</p>
-        <h1 class="title">Teste da Tríade do Tempo</h1>
+        <h1 class="title">Pesquisa Tríade do Tempo</h1>
         <p class="subtitle">Seja honesto ao responder.</p>
       </div>
 
@@ -444,42 +444,42 @@
           <p>Instruções: para cada pergunta, selecione a opção que melhor reflete sua frequência: 1 (Nunca), 2 (Raramente), 3 (Às vezes), 4 (Quase sempre), 5 (Sempre). O avanço será automático. Preencha seus dados para iniciar.</p>
         </div>
         
-        <!-- CARD COM DESIGN CENTRALIZADO E ELEGANTE -->
-        <div class="card" style="max-width: 500px; margin: 0 auto; padding: 32px 24px;">
+        <!-- CARD COM DESIGN CENTRALIZADO E PROPORCIONAL AOS CAMPOS -->
+        <div class="card" style="width: fit-content; min-width: 320px; max-width: 100%; margin: 0 auto; padding: 32px 24px;">
           <div style="display:flex; flex-direction:column; gap:18px;">
             <div class="form-group" style="text-align: center;">
               <label for="name">Nome *</label>
-              <input type="text" id="name" name="name" autocomplete="name" style="text-align: center;" />
+              <input type="text" id="name" name="name" autocomplete="name" style="text-align: center; max-width: 320px; margin: 0 auto; display: block;" />
               <p id="name-error" class="error">Por favor, preencha o nome.</p>
             </div>
             
             <div class="form-group" style="text-align: center;">
               <label for="whatsapp">WhatsApp *</label>
-              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00)90000-0000" maxlength="14" style="text-align: center;" />
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00)90000-0000" maxlength="14" style="text-align: center; max-width: 180px; margin: 0 auto; display: block;" />
               <p id="whatsapp-error" class="error">Por favor, preencha um WhatsApp válido.</p>
             </div>
             
             <div class="form-group" style="text-align: center;">
               <label for="email">E-mail *</label>
-              <input type="email" id="email" name="email" autocomplete="email" style="text-align: center;" />
+              <input type="email" id="email" name="email" autocomplete="email" style="text-align: center; max-width: 320px; margin: 0 auto; display: block;" />
               <p id="email-error" class="error">Por favor, preencha um e-mail válido.</p>
             </div>
             
             <div class="form-group" style="text-align: center;">
               <label for="profession">Profissão *</label>
-              <input type="text" id="profession" name="profession" autocomplete="organization-title" style="text-align: center;" />
+              <input type="text" id="profession" name="profession" autocomplete="organization-title" style="text-align: center; max-width: 320px; margin: 0 auto; display: block;" />
               <p id="profession-error" class="error">Por favor, preencha a profissão.</p>
             </div>
             
-            <div class="form-group" style="text-align: center; max-width: 120px; margin: 0 auto;">
+            <div class="form-group" style="text-align: center;">
               <label for="age">Idade *</label>
-              <input type="text" id="age" name="age" maxlength="2" inputmode="numeric" style="text-align: center;" />
+              <input type="text" id="age" name="age" maxlength="2" inputmode="numeric" style="text-align: center; max-width: 90px; margin: 0 auto; display: block;" />
               <p id="age-error" class="error">Idade inválida.</p>
             </div>
           </div>
           
           <div class="nav" style="justify-content:center; margin-top:28px;">
-            <button id="btn-start" class="btn btn-primary" type="button" style="width: 100%; justify-content: center; padding: 14px; font-size: 16px;">Iniciar Teste</button>
+            <button id="btn-start" class="btn btn-primary" type="button" style="width: 100%; max-width: 320px; justify-content: center; padding: 14px; font-size: 16px;">Iniciar Pesquisa</button>
           </div>
         </div>
       </section>
@@ -641,7 +641,7 @@
   function validateEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
   function isValidAge(ageStr){
     const n = Number(ageStr);
-    return Number.isFinite(n) && n >= 10 && n <= 120;
+    return Number.isFinite(n) && n >= 10 && n <= 99;
   }
 
   function setAutoSendStatus(msg, type = 'pending') {
@@ -834,7 +834,7 @@
     doc.setFont("helvetica", "bold");
     doc.setFontSize(14);
     doc.setTextColor(0, 64, 128);
-    doc.text("Teste da Tríade do Tempo", pageW / 2, y, { align: "center" });
+    doc.text("Pesquisa Tríade do Tempo", pageW / 2, y, { align: "center" });
     doc.setTextColor(0, 0, 0);
     y += 10;
     
@@ -867,7 +867,7 @@
     doc.setFontSize(10);
     doc.setTextColor(220, 38, 38);
     newPageIfNeeded(6);
-    doc.text(`Vazamento de Energia (A + C): ${energyLeak}`, margin, y);
+    doc.text(`Vazamento de Energia: ${energyLeak}`, margin, y);
     doc.setTextColor(0, 0, 0);
     y += 8;
 
@@ -1026,7 +1026,7 @@
     doc.text("Rogério Braga", pageW / 2, y, { align: "center" });
 
     const safeName = sanitizeInput(name).replace(/\s+/g, "_").replace(/[^a-zA-Z0-9_]/g, "");
-    const pdfFileName = `🔥 Tríade: ${safeName}.pdf`;
+    const pdfFileName = `Triade_${safeName}.pdf`;
 
     return { doc, pdfFileName };
   }
@@ -1183,7 +1183,7 @@
     const age = elAge.value.trim();
 
     const okName = !!name;
-    const okWhatsapp = whatsapp.length >= 14; // Valida máscara (00)90000-0000 ou (00)0000-0000
+    const okWhatsapp = whatsapp.length >= 14; 
     const okEmail = validateEmail(email);
     const okProf = !!prof;
     const okAge = age.length > 0 && Number(age) >= 10 && Number(age) <= 99;
@@ -1197,14 +1197,12 @@
     return okName && okWhatsapp && okEmail && okProf && okAge;
   }
 
-  // Máscara de formatação para o WhatsApp (00)99999-9999
   elWhatsapp.addEventListener('input', function (e) {
     let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
     e.target.value = !x[2] ? x[1] : '(' + x[1] + ')' + x[2] + (x[3] ? '-' + x[3] : '');
     validateIntro();
   });
 
-  // Forçar apenas números na Idade (limite de 2 pelo maxlength do HTML)
   elAge.addEventListener('input', function (e) {
     e.target.value = e.target.value.replace(/\D/g, '');
     validateIntro();
@@ -1249,7 +1247,6 @@
 
     btnPrev.disabled = currentIndex === 0;
     
-    // Mostra o botão "Finalizar" apenas na última pergunta
     if(currentIndex === 17){
       btnNext.style.display = "inline-flex";
       btnNext.textContent = "Finalizar e Ver Resultado";
@@ -1415,7 +1412,11 @@
 
     const totals = computeTotals();
     const percentages = computePercentages(totals);
-    const energyLeak = (totals.A + totals.C).toFixed(1);
+    
+    // NOVA REGRA DE VAZAMENTO DE ENERGIA: 70 - Importante (Se o importante for > 70, não há vazamento)
+    let energiaPerdida = 70 - percentages.B;
+    if(energiaPerdida < 0) energiaPerdida = 0;
+    const energyLeak = energiaPerdida.toFixed(1) + "%";
 
     document.getElementById("result-title").textContent = `${sanitizeInput(name)} (${sanitizeInput(profession)}) - Sua Tríade do Tempo`;
 
