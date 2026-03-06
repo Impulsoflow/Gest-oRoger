@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Diagnóstico Tríade do Tempo - ImpulsoCoaching (Guiado)</title>
+  <title>Diagnóstico Tríade do Tempo - ImpulsoCoaching (Guiado)</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
@@ -439,37 +439,47 @@
 
       <!-- STEP: INTRO -->
       <section id="step-intro" class="step active">
-        <div class="instructions">
+        <div class="instructions" style="text-align: center;">
           <p>A Tríade do Tempo — é um modelo prático de produtividade inspirado em teorias conhecidas em gestão do tempo. Ela expõe com precisão onde sua energia está sendo investida. Organizações que adotam essa metodologia relatam ganhos expressivos de performance e foco, com indicadores de produtividade chegando a 50%. Agora, você vai iniciar um processo que líderes de alta performance utilizam para transformar agenda em resultado.</p>
           <p>Instruções: para cada pergunta, selecione a opção que melhor reflete sua frequência: 1 (Nunca), 2 (Raramente), 3 (Às vezes), 4 (Quase sempre), 5 (Sempre). O avanço será automático. Preencha seus dados para iniciar.</p>
         </div>
-        <div class="card">
-          <div class="grid-2">
-            <div class="form-group">
+        
+        <!-- CARD COM DESIGN CENTRALIZADO E ELEGANTE -->
+        <div class="card" style="max-width: 500px; margin: 0 auto; padding: 32px 24px;">
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div class="form-group" style="text-align: center;">
               <label for="name">Nome *</label>
-              <input type="text" id="name" name="name" autocomplete="name" />
+              <input type="text" id="name" name="name" autocomplete="name" style="text-align: center;" />
               <p id="name-error" class="error">Por favor, preencha o nome.</p>
             </div>
-            <div class="form-group">
-              <label for="profession">Profissão *</label>
-              <input type="text" id="profession" name="profession" autocomplete="organization-title" />
-              <p id="profession-error" class="error">Por favor, preencha a profissão.</p>
+            
+            <div class="form-group" style="text-align: center;">
+              <label for="whatsapp">WhatsApp *</label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00)90000-0000" maxlength="14" style="text-align: center;" />
+              <p id="whatsapp-error" class="error">Por favor, preencha um WhatsApp válido.</p>
             </div>
-          </div>
-          <div class="grid-2" style="margin-top:14px;">
-            <div class="form-group">
-              <label for="age">Idade *</label>
-              <input type="number" id="age" name="age" min="10" max="99" inputmode="numeric" />
-              <p id="age-error" class="error">Por favor, informe uma idade válida (10 a 99).</p>
-            </div>
-            <div class="form-group">
+            
+            <div class="form-group" style="text-align: center;">
               <label for="email">E-mail *</label>
-              <input type="email" id="email" name="email" autocomplete="email" />
+              <input type="email" id="email" name="email" autocomplete="email" style="text-align: center;" />
               <p id="email-error" class="error">Por favor, preencha um e-mail válido.</p>
             </div>
+            
+            <div class="form-group" style="text-align: center;">
+              <label for="profession">Profissão *</label>
+              <input type="text" id="profession" name="profession" autocomplete="organization-title" style="text-align: center;" />
+              <p id="profession-error" class="error">Por favor, preencha a profissão.</p>
+            </div>
+            
+            <div class="form-group" style="text-align: center; max-width: 120px; margin: 0 auto;">
+              <label for="age">Idade *</label>
+              <input type="text" id="age" name="age" maxlength="2" inputmode="numeric" style="text-align: center;" />
+              <p id="age-error" class="error">Idade inválida.</p>
+            </div>
           </div>
-          <div class="nav" style="justify-content:flex-end">
-            <button id="btn-start" class="btn btn-primary" type="button">Iniciar Teste</button>
+          
+          <div class="nav" style="justify-content:center; margin-top:28px;">
+            <button id="btn-start" class="btn btn-primary" type="button" style="width: 100%; justify-content: center; padding: 14px; font-size: 16px;">Iniciar Teste</button>
           </div>
         </div>
       </section>
@@ -664,7 +674,7 @@
     ].join("\n");
   }
 
-  // ===== Identificação e Geração Rica do Perfil (COM AS NOVAS REGRAS) =====
+  // ===== Identificação e Geração Rica do Perfil =====
   function triadPickProfile(A, B, C){
     const a = Number(A), b = Number(B), c = Number(C);
     let prof = {};
@@ -714,7 +724,7 @@
         texto: "É o profissional que parece sempre ocupado, vivendo na adrenalina das crises e resolvendo tudo na última hora. É frequentemente elogiado por 'salvar o dia', o que ironicamente reforça esse padrão exaustivo. Com a agenda dominada por reações, raramente tem tempo para pensar estrategicamente. Embora os colegas o vejam como indispensável, ele está aprisionado em um ciclo insustentável.\n\nPossíveis consequências:\n* Estresse crônico e Cansaço extremo\n* Depressão e Insegurança\n* Problemas de saúde"
       };
     }
-    // FALLBACKS caso o usuário tenha um preenchimento muito atípico que não caia em nenhuma regra acima
+    // FALLBACKS caso o usuário tenha um preenchimento atípico
     else if(b >= a && b >= c) {
       prof = { nome: "Predominância em Importância (B)", subtitle: "Foco no importante", desc: "", texto: "Você tende a priorizar atividades relevantes e com resultado de longo prazo." };
     }
@@ -725,7 +735,6 @@
       prof = { nome: "Predominância em Circunstância (A)", subtitle: "Foco no circunstancial", desc: "", texto: "Você tende a gastar muito tempo com atividades desnecessárias ou sem foco." };
     }
     
-    // Associa a Esfera Correta Baseada no Perfil Calculado
     if (prof.nome.includes("Super Homem")) prof.sphereBase64 = createSphereBase64(10, 65, 25);
     else if (prof.nome.includes("Homer")) prof.sphereBase64 = createSphereBase64(10, 15, 75);
     else if (prof.nome.includes("Equilibrista")) prof.sphereBase64 = createSphereBase64(10, 45, 45);
@@ -756,6 +765,7 @@
     const profession = prettyData.profissao;
     const age = prettyData.idade;
     const email = prettyData.email;
+    const whatsapp = prettyData.whatsapp;
 
     function newPageIfNeeded(extraH) {
       if (y + extraH > pageH - margin) { doc.addPage(); y = margin; }
@@ -840,6 +850,7 @@
     addKeyValue("Profissão", sanitizeInput(profession));
     addKeyValue("Idade", sanitizeInput(String(age)));
     addKeyValue("E-mail", sanitizeInput(email));
+    addKeyValue("WhatsApp", sanitizeInput(whatsapp));
     y += 3;
 
     addH2("2) Distribuição (%)");
@@ -906,17 +917,16 @@
     y += 5;
 
     // ==========================================
-    // SESSÃO DOS CARDS COM ESFERA DE 50mm
-    // (Ajustado para mock data casar com a nova regra lógica)
+    // SESSÃO DOS CARDS 
     // ==========================================
     addH2("7) Detalhamento dos Perfis Comportamentais (Cards Oficiais)");
 
     const profilesData = [
-      triadPickProfile(25, 10, 65), // Super Homem (C > A, e (C+A)>B)
-      triadPickProfile(75, 10, 15), // Homer Simpson (A > B e A > C)
-      triadPickProfile(35, 30, 35), // O Equilibrista (A e C ~35, B < 40)
-      triadPickProfile(30, 55, 15), // Homem de Ferro (B >= 55, A >= 30, C <= 20)
-      triadPickProfile(10, 70, 20)  // Super Poderoso Thor (B >= 60, A <= 20, C <= 20)
+      triadPickProfile(25, 10, 65), // Super Homem 
+      triadPickProfile(75, 10, 15), // Homer Simpson 
+      triadPickProfile(35, 30, 35), // O Equilibrista 
+      triadPickProfile(30, 55, 15), // Homem de Ferro 
+      triadPickProfile(10, 70, 20)  // Super Poderoso Thor 
     ];
 
     profilesData.forEach(prof => {
@@ -1060,6 +1070,7 @@
         testId: "triade_v1",
         nome: data.prettyData.nome,
         email: data.prettyData.email,
+        whatsapp: data.prettyData.whatsapp,
         idade: data.prettyData.idade,
         profissao: data.prettyData.profissao,
         resumo: resumoTriade,
@@ -1136,13 +1147,16 @@
   const stepResults = document.getElementById("step-results");
 
   const elName = document.getElementById("name");
+  const elWhatsapp = document.getElementById("whatsapp");
+  const elEmail = document.getElementById("email");
   const elProfession = document.getElementById("profession");
   const elAge = document.getElementById("age");
-  const elEmail = document.getElementById("email");
+
   const elNameErr = document.getElementById("name-error");
+  const elWhatsappErr = document.getElementById("whatsapp-error");
+  const elEmailErr = document.getElementById("email-error");
   const elProfErr = document.getElementById("profession-error");
   const elAgeErr = document.getElementById("age-error");
-  const elEmailErr = document.getElementById("email-error");
 
   const btnStart = document.getElementById("btn-start");
   const btnPrev = document.getElementById("btn-prev");
@@ -1163,27 +1177,42 @@
 
   function validateIntro(){
     const name = elName.value.trim();
+    const whatsapp = elWhatsapp.value.trim();
+    const email = elEmail.value.trim();
     const prof = elProfession.value.trim();
     const age = elAge.value.trim();
-    const email = elEmail.value.trim();
 
     const okName = !!name;
-    const okProf = !!prof;
-    const okAge = isValidAge(age);
+    const okWhatsapp = whatsapp.length >= 14; // Valida máscara (00)90000-0000 ou (00)0000-0000
     const okEmail = validateEmail(email);
+    const okProf = !!prof;
+    const okAge = age.length > 0 && Number(age) >= 10 && Number(age) <= 99;
 
     elNameErr.style.display = okName ? "none" : "block";
+    elWhatsappErr.style.display = okWhatsapp ? "none" : "block";
+    elEmailErr.style.display = okEmail ? "none" : "block";
     elProfErr.style.display = okProf ? "none" : "block";
     elAgeErr.style.display = okAge ? "none" : "block";
-    elEmailErr.style.display = okEmail ? "none" : "block";
 
-    return okName && okProf && okAge && okEmail;
+    return okName && okWhatsapp && okEmail && okProf && okAge;
   }
 
+  // Máscara de formatação para o WhatsApp (00)99999-9999
+  elWhatsapp.addEventListener('input', function (e) {
+    let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+    e.target.value = !x[2] ? x[1] : '(' + x[1] + ')' + x[2] + (x[3] ? '-' + x[3] : '');
+    validateIntro();
+  });
+
+  // Forçar apenas números na Idade (limite de 2 pelo maxlength do HTML)
+  elAge.addEventListener('input', function (e) {
+    e.target.value = e.target.value.replace(/\D/g, '');
+    validateIntro();
+  });
+
   elName.addEventListener("input", validateIntro);
-  elProfession.addEventListener("input", validateIntro);
-  elAge.addEventListener("input", validateIntro);
   elEmail.addEventListener("input", validateIntro);
+  elProfession.addEventListener("input", validateIntro);
 
   btnStart.addEventListener("click", () => {
     if(!validateIntro()) return;
@@ -1377,9 +1406,11 @@
     }
 
     const name = elName.value.trim();
+    const whatsapp = elWhatsapp.value.trim();
+    const email = elEmail.value.trim();
     const profession = elProfession.value.trim();
     const age = elAge.value.trim();
-    const email = elEmail.value.trim();
+    
     if (!validateIntro()) return null;
 
     const totals = computeTotals();
@@ -1411,7 +1442,8 @@
     renderCharts(percentages);
     showStep(stepResults);
 
-    const prettyData = { nome: name, profissao: profession, idade: age, email: email };
+    // O WhatsApp agora também faz parte dos dados gerados
+    const prettyData = { nome: name, whatsapp: whatsapp, email: email, profissao: profession, idade: age };
     return { prettyData, totals, percentages, energyLeak };
   }
 
